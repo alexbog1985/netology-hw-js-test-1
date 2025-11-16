@@ -1,5 +1,7 @@
 import "./card-validator.css";
 
 export default class CardValidator {
-  constructor() {}
+  constructor() {
+    console.log("CardValidator");
+  }
 }
