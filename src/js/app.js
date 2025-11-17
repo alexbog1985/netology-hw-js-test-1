@@ -1,3 +1,7 @@
 import CardValidator from "../components/card-validator/card-validator";
 
-new CardValidator();
+const cardValidatorWidget = document.querySelector(".widget-container");
+
+const cardValidator = new CardValidator(cardValidatorWidget);
+
+cardValidator.init();
