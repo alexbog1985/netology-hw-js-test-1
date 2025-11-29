@@ -46,7 +46,7 @@ describe("CardValidator - luhn algorithm tests", () => {
     "luhnCheck(%s) should return %s for %s",
     (cardNumber, expected, description) => {
       expect(validator.luhnCheck(cardNumber)).toBe(expected);
-    }
+    },
   );
 });
 
@@ -82,6 +82,6 @@ describe("CardValidator - card types tests", () => {
     "getCardType should return %s for %s, %s",
     (cardNumber, expectedType, description) => {
       expect(validator.getCardType(cardNumber)).toBe(expectedType);
-    }
+    },
   );
 });
