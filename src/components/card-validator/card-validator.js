@@ -44,7 +44,7 @@ export default class CardValidator {
 
   showResult(message, isValid) {
     this.messageElement.textContent = message;
-    this.messageElement.className = `Результат проверки: ${isValid ? "Ok" : "Not Valid"}`;
+    this.messageElement.className = `validation-result ${isValid ? "validation-result_valid" : "validation-result_invalid"}`;
   }
 
   luhnCheck(cardNumber) {
@@ -68,12 +68,14 @@ export default class CardValidator {
 
   getCardType(cardNumber) {
     const patterns = {
-      visa: /^4[0-9]{12}(?:[0-9]{3})?$/,
-      mastercard: /^5[1-5][0-9]{14}$/,
+      mir: /^220[0-9][0-9]{11,14}$/,
+      visa: /^4[0-9]{12}(?:[0-9]{3})?$|^4[0-9]{18}$/,
+      mastercard: /^(5[1-5]\d{14}|2(2[2-9][1-9]|[3-6]\d|7[0-1])\d{12})$/,
       "american express": /^3[47][0-9]{13}$/,
-      discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
-      jcb: /^(?:2131|1800|35\d{3})\d{11}$/,
-      "diners club": /^3[0689][0-9]{12,14}$/,
+      discover:
+        /^6(?:011|5[0-9]{2}|4[4-9][0-9]|22[1-9][0-9]{2})(?:[0-9]{12}|[0-9]{15})$/,
+      jcb: /^(?:2131|1800|35\d{3})\d{11,14}$/,
+      "diners club": /^3(?:0[0-5]|[68][0-9])[0-9]{11,13}$/
     };
 
     for (const [type, regex] of Object.entries(patterns)) {
@@ -81,6 +83,8 @@ export default class CardValidator {
         return type;
       }
     }
+
+    return null;
   }
 
   updateIcons() {
