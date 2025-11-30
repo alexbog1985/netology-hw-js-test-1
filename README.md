@@ -1,1 +1,2 @@
 Домашнее задание к занятию "4.Организация тестирования"
+[![GHPages](https://github.com/alexbog1985/netology-hw-js-test-1/actions/workflows/web.yml/badge.svg)](https://github.com/alexbog1985/netology-hw-js-test-1/actions/workflows/web.yml)
